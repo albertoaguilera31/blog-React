@@ -10,10 +10,10 @@ function App() {
 
   return (
     
-      <div className='App'>
-        <h1>Blog con React</h1>
+      <div className='layout'>
 
         <Rutas/>
+        
       </div>
       
   )
