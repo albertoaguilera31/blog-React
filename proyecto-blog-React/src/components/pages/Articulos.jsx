@@ -5,26 +5,23 @@ export const Articulos = () => {
   const [articulos, setArticulos] = useState([]);
 
   useEffect(() => {
-    let data = [
-      {
-        _id: 1,
-        titulo: "Titulo 1",
-        contenido: "Contenido",
-      },
-      {
-        _id: 2,
-        titulo: "Titulo 2",
-        contenido: "Contenido",
-      },
-      {
-        _id: 3,
-        titulo: "Titulo 3",
-        contenido: "Contenido",
-      },
-    ];
+    
 
     setArticulos(data);
+    conseguirArticulos();
   }, []);
+
+  const conseguirArticulos = async()=>{
+    const url= "http://localhost:3900/api/articulos";
+    let peticion= await fetch(url,{
+      method: "GET"
+    });
+    let datos= await peticion.json(); 
+
+    if(datos.status === "success"){
+      setArticulos(datos.articulos);
+    }
+  }
 
   return (
     <>
